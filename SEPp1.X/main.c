@@ -75,6 +75,7 @@
 #include "mpu.h"
 #include "i2c.h"
 #include "spi.h"
+#include "ioc.h"
 
 #define TRUE 1
 #define FALSE 0
