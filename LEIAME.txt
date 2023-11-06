@@ -1,0 +1,1 @@
+Temos a maioria das funcionalidades a funcionar, entretanto não conseguimos juntar tudo em um código, como por exemplo as leituras do sensor em que trabalhamos em conjunto com o senhor na aula e não conseguimos fazer funcionar como se devia. Então temos três versões em zips, sendo que dentro delas estão os códigos devkit e do pickit
