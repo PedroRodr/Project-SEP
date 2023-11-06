@@ -10,7 +10,7 @@
 #include "i2c.h"
 
 int Ax,Ay,Az,T,Gx,Gy,Gz;
-float AX, AY, AZ, t, GX, GY, GZ;
+extern float ax, ay, az, gx, gy, gz, ti;
 
 // - - - - - - - - - - - - - - - MPU6050- - - - - - - - - - - - - - - - - -
 
@@ -43,8 +43,8 @@ void initializeMPU6050(){
     configureMPU6050(SMPLRT_DIV, 0x07);         //Configure Sample (Data) Rate
     configureMPU6050(PWR_MGMT_1, 0x01);         //Configure Clock Source
     configureMPU6050(CONFIG, 0x00);             //Configure DLPF
-    configureMPU6050(INT_PIN_CFG, 0x10);        //Configure INT
-    configureMPU6050(INT_ENABLE, 0x01);        //Configure INT
+//    configureMPU6050(INT_PIN_CFG, 0x10);        //Configure INT
+//    configureMPU6050(INT_ENABLE, 0x01);        //Configure INT
     
 //    TRISBbits.TRISB6 = 0; // configure MPU6050 INT pin as output
 //    LATBbits.LATB6 = 0; // configure MPU6050 INT pin to a known state (low)
@@ -84,12 +84,12 @@ void MPU6050(){
     stopConditionI2C();
     
     // Convert The Readings
-    AX = (float)Ax/16384.0;
-    AY = (float)Ay/16384.0;
-    AZ = (float)Az/16384.0;
-    GX = (float)Gx/131.0;
-    GY = (float)Gy/131.0;
-    GZ = (float)Gz/131.0;
-    t = ((float)T/340.00)+36.53;
+    ax = (float)Ax/16384.0;
+    ay = (float)Ay/16384.0;
+    az = (float)Az/16384.0;
+    gx = (float)Gx/131.0;
+    gy = (float)Gy/131.0;
+    gz = (float)Gz/131.0;
+    ti = ((float)T/340.00)+36.53;
     
 }

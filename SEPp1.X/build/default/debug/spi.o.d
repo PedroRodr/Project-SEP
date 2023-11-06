@@ -1,3 +1,5 @@
-build/default/debug/spi.o: spi.c spi.h
+build/default/debug/spi.o: spi.c spi.h mpu.h
 
 spi.h:
+
+mpu.h:
