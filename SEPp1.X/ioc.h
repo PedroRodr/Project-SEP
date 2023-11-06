@@ -13,5 +13,8 @@
 #include <libpic30.h>
 
 void initializeInterruption();
+void timerConfig();
+void __attribute__((__interrupt__, auto_psv)) _IOCInterrupt();
+void __attribute__((__interrupt__, auto_psv)) _T1Interrupt();
 
 #endif // IOC_H

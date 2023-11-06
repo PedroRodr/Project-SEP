@@ -82,16 +82,21 @@
 
 #define PRIORITY 3
 
+volatile uint16_t iocFlag;
+uint8_t T1_expired;
 
 int main(int argc, char** argv) 
 {
 
-    uint8_t dataout = 0xAA;
+    //uint8_t dataout = 0x3D;
     uint8_t datain;
+    
     
     initializeI2C();
     initializeMPU6050();
     configureSPISlave();
+    initializeInterruption();
+    timerConfig();
     
 //    ANSAbits.ANSA0 = 0; // Unset the pin ANS bit, make sure analog functionality is disabled
 //    LATAbits.LATA0 = 1; // Set the pin LAT bit, set outputs to 1
@@ -103,16 +108,24 @@ int main(int argc, char** argv)
 //    TRISBbits.TRISB1 = 0; // Unset the pin TRIS bit, enables the digital output
     
     while(1) {
-        writeByteSPI(dataout, datain);
-        //if(iocFlag)
-        //{ 
-            //MPU6050();
-            //iocFlag = 0;
-        //}
-        //MPU6050(); 
+        
+        if(iocFlag) {
+            
+            sendCommand();
+            iocFlag = 0;
+            
+        }
 
+//        if (T1_expired == 1){
+//            MPU6050();
+//            IFS0bits.T1IF = 0; //Reset Timer2 interrupt flag and Return from ISR
+// 
+//            T1_expired = 0;
+//       
+//        } 
+        
         // Perform your MPU6050 data reading here
-        MPU6050();  // Reads data from MPU6050
+        //MPU6050();  // Reads data from MPU6050
 
         // Delay for a short duration (adjust this as needed)
         __delay_ms(10);

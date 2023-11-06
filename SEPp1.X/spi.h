@@ -16,7 +16,18 @@
 #define SPI_SDO_PIN  RPOR3bits.RP7R      // SPI Data Output (SDO1) pin
 #define SPI_SCK_PIN  RPOR4bits.RP8R      // SPI Clock (SCK1) pin
 
+#define DUMMY 0xAA
+#define AX 0x01
+#define AY 0x02
+#define AZ 0x03
+#define GX 0x04
+#define GY 0x05
+#define GZ 0x06
+#define TI 0x07
+
 void configureSPISlave();
-void writeByteSPI(uint8_t dataOut, uint8_t dataIn);
+void writeByteSPI(float sensorValue);
+void sendCommand();
+
 
 #endif // SPI_H
